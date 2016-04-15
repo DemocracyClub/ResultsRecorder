@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}democlubdemo{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="{% static "css/democlubdemo.css" %}" rel="stylesheet" media="screen">
+
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js" data-no-instant></script>
+    <![endif]-->
+    {% block extrahead %}{% endblock %}
+  </head>
+
+  <body class="{% block body_classes %}f_generic_base{% endblock %}" {% block body_extra %}{% endblock %}>
+    {% block messages %}
+    {% if messages %}
+    <div class="alerts-wrapper">
+      <div class="alerts">
+        {% for message in messages %}
+        <div class="alert alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}">
+          {{ message }}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    {% endblock %}
+
+    {% block body %}{% endblock %}
+
+    {% block script %}
+    <script type="text/javascript" src="{% static "js/democlubdemo.js" %}"></script>
+    {% endblock %}
+  </body>
+</html>

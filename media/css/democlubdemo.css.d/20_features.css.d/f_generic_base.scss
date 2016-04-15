@@ -1,0 +1,40 @@
+html {
+  height: 100%;
+}
+
+.f_generic_base {
+  color: #4d4d4d;
+
+  a {
+    color: #4d4d4d;
+    text-decoration: none;
+    border-bottom: 1px dotted #999;
+  }
+
+  section {
+    padding: 40px 0;
+  }
+
+  .container {
+    max-width: 710px;
+
+    &.wide {
+      max-width: none;
+    }
+  }
+
+  #instantclick-bar {
+    background: #333;
+  }
+
+  hr {
+    border: none;
+    margin: 30px 0 50px 0;
+    font-size: 19px;
+    text-align: center;
+
+    &:after {
+      content: '\00a7';
+    }
+  }
+}

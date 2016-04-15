@@ -1,0 +1,148 @@
+{% extends "base/base.html" %}
+
+{% block title %}{{ block.super }}{% endblock %}
+
+{% block body_classes %}{{ block.super }} f_elections_post{% endblock %}
+
+{% block container %}
+
+<div class="page-header">
+  <h1>
+    Submit results for {{ post.data.label }}
+    <small><a href="{% url "elections:view" election.ident %}">{{ election.data.name }}</a></small>
+  </h1>
+</div>
+
+{% if form.non_field_errors %}
+<div class="has-error">
+  {% for x in form.non_field_errors %}
+  <p class="help-block">{{ x }}</p>
+  {% endfor %}
+</div>
+{% endif %}
+
+<form
+  method="POST"
+  class="form-horizontal"
+  action=""
+  {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}
+>
+  {% csrf_token %}
+
+  <div class="form-group {% if form.errors.num_turnout_calculated %}has-error{% endif %}">
+    <label
+      for="{{ form.num_turnout_calculated.id_for_label }}"
+      class="control-label col-sm-3"
+    >
+      Turnout calculated
+    </label>
+    <div class="col-sm-9">
+      <input
+        id="{{ form.num_turnout_calculated.id_for_label }}"
+        type="number"
+        class="form-control"
+        name="{{ form.num_turnout_calculated.html_name }}"
+        value="{{ form.num_turnout_calculated.value|default:0 }}"
+        placeholder=""
+        {% if form.fields.num_turnout_calculated.required %}required{% endif %}
+      >
+      {% for x in form.errors.num_turnout_calculated %}
+        <p class="help-block">{{ x }}</p>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="form-group {% if form.errors.num_turnout_reported %}has-error{% endif %}">
+    <label
+      for="{{ form.num_turnout_reported.id_for_label }}"
+      class="control-label col-sm-3"
+    >
+      Turnout reported
+    </label>
+    <div class="col-sm-9">
+      <input
+        id="{{ form.num_turnout_reported.id_for_label }}"
+        type="number"
+        class="form-control"
+        name="{{ form.num_turnout_reported.html_name }}"
+        value="{{ form.num_turnout_reported.value|default:0 }}"
+        placeholder=""
+        {% if form.fields.num_turnout_reported.required %}required{% endif %}
+      >
+      {% for x in form.errors.num_turnout_reported %}
+        <p class="help-block">{{ x }}</p>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="form-group {% if form.errors.num_spoilt_ballots %}has-error{% endif %}">
+    <label
+      for="{{ form.num_spoilt_ballots.id_for_label }}"
+      class="control-label col-sm-3"
+    >
+      Spoilt ballots
+    </label>
+    <div class="col-sm-9">
+      <input
+        id="{{ form.num_spoilt_ballots.id_for_label }}"
+        type="number"
+        class="form-control"
+        name="{{ form.num_spoilt_ballots.html_name }}"
+        value="{{ form.num_spoilt_ballots.value|default:0 }}"
+        placeholder=""
+        {% if form.fields.num_spoilt_ballots.required %}required{% endif %}
+      >
+      {% for x in form.errors.num_spoilt_ballots %}
+        <p class="help-block">{{ x }}</p>
+      {% endfor %}
+    </div>
+  </div>
+
+  <br>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Candidate</th>
+        <th>Party</th>
+        <th>Ballots reported</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for candidate, field in form.candidates %}
+      <tr>
+        <td>
+          {{ candidate.data.person.name }}
+        </td>
+        <td>
+          {{ candidate.data.on_behalf_of.name }}
+        </td>
+        <td>
+          <input
+            id="{{ field.id_for_label }}"
+            type="number"
+            class="form-control"
+            name="{{ field.html_name }}"
+            value="{{ field.value|default:0 }}"
+            placeholder=""
+            {% if field.field.required %}required{% endif %}
+          >
+          {% for x in form.errors.field %}
+            <p class="help-block">{{ x }}</p>
+          {% endfor %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-9">
+      <button type="submit" class="btn btn-primary">
+        Submit
+      </button>
+    </div>
+  </div>
+</form>
+
+{% endblock %}

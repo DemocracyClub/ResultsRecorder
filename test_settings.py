@@ -1,0 +1,1 @@
+from democlubdemo.settings import *

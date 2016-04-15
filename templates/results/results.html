@@ -1,0 +1,95 @@
+{% extends "base/base.html" %}
+
+{% block title %}{{ block.super }}{% endblock %}
+
+{% block body_classes %}{{ block.super }} f_elections_post{% endblock %}
+
+{% block container %}
+
+<div class="page-header">
+  <h1>
+    Submitted results for {{ post.data.label }}
+    <small><a href="{% url "elections:view" election.ident %}">{{ election.data.name }}</a></small>
+  </h1>
+</div>
+
+{% for result_set in post.result_sets.all %}
+
+<h3>Result set submitted by {{ result_set.user.get_full_name }}</h3>
+
+<dl class="dl-horizontal">
+  <dt>Submitted by</dt>
+  <dd>{{ result_set.user.get_full_name }}</dd>
+
+  <dt>Turnout calculated</dt>
+  <dd>{{ result_set.num_turnout_calculated }}</dd>
+
+  <dt>Turnout reported</dt>
+  <dd>{{ result_set.num_turnout_reported }}</dd>
+
+  <dt>Spoilt ballots</dt>
+  <dd>{{ result_set.num_spoilt_ballots }}</dd>
+</dl>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Ballots reported</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for candidate_result in result_set.candidate_results.all %}
+    <tr class="{% if candidate_result.is_winner %}success{% endif %}">
+      <td>
+        {{ candidate_result.candidate.data.person.name }}
+      </td>
+      <td>
+        {{ candidate_result.candidate.data.on_behalf_of.name }}
+      </td>
+      <td>
+        {{ candidate_result.num_ballots_reported }}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% if form.non_field_errors %}
+<div class="has-error">
+  {% for x in form.non_field_errors %}
+  <p class="help-block">{{ x }}</p>
+  {% endfor %}
+</div>
+{% endif %}
+
+<form
+  style="display: inline;"
+  method="POST"
+  action="{% url "results:verify" election.ident post.ident result_set.pk %}"
+>
+  {% csrf_token %}
+  <button type="submit" class="btn btn-primary">
+    Verify
+  </button>
+</form>
+
+<form
+  style="display: inline;"
+  method="POST"
+  action="{% url "results:delete" election.ident post.ident result_set.pk %}"
+>
+  {% csrf_token %}
+
+  <button type="submit" class="btn btn-danger">
+    Delete
+  </button>
+</form>
+
+<br>
+<br>
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base/base.html" %}
+
+{% block title %}{{ block.super }}{% endblock %}
+
+{% block body_classes %}{{ block.super }} f_elections_view{% endblock %}
+
+{% block container %}
+
+<div class="page-header">
+  <h1>
+    {{ election.data.name }}
+    <small>({{ election.data.election_date }})</small>
+  </h1>
+</div>
+
+<h2>Posts</h2>
+
+<ul>
+  {% for post in election.posts.all %}
+  <li>
+    <a href="{% url "elections:post" election.ident post.ident %}">{{ post.data.label }}</a>
+  </li>
+  {% empty %}
+  <li>
+    <em>(No posts)</em>
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

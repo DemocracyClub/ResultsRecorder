@@ -1,0 +1,86 @@
+{% extends "base/base.html" %}
+
+{% block title %}{{ block.super }}{% endblock %}
+
+{% block body_classes %}{{ block.super }} f_elections_post{% endblock %}
+
+{% block container %}
+
+<div class="page-header">
+  <h1>
+    {{ post.data.label }}
+    <small><a href="{% url "elections:view" election.ident %}">{{ election.data.name }}</a></small>
+  </h1>
+</div>
+
+{% if result_set %}
+  <dl class="dl-horizontal">
+    <dt>Turnout calculated</dt>
+    <dd>{{ result_set.num_turnout_calculated }}</dd>
+
+    <dt>Turnout reported</dt>
+    <dd>{{ result_set.num_turnout_reported }}</dd>
+
+    <dt>Spoilt ballots</dt>
+    <dd>{{ result_set.num_spoilt_ballots }}</dd>
+  </dl>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Candidate</th>
+        <th>Party</th>
+        <th>Ballots reported</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for candidate_result in result_set.candidate_results.all %}
+      <tr class="{% if candidate_result.is_winner %}success{% endif %}">
+        <td>
+          {{ candidate_result.candidate.data.person.name }}
+        </td>
+        <td>
+          {{ candidate_result.candidate.data.on_behalf_of.name }}
+        </td>
+        <td>
+          {{ candidate_result.num_ballots_reported }}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p>
+    Data submitted by {{ result_set.user.get_full_name }}.
+  </p>
+{% else %}
+  <p>
+    <a href="{% url "results:submit" election.ident post.ident %}" class="btn btn-default">
+      Submit results
+    </a>
+
+    {% if post.result_sets.exists %}
+    <a href="{% url "results:results" election.ident post.ident %}" class="btn btn-default">
+      Submitted results ({{ post.result_sets.count }})
+    </a>
+    {% endif %}
+  </p>
+
+  <br>
+
+  <ul>
+    {% for candidate in post.candidates.all %}
+    <li>
+      {{ candidate.data.person.name }}
+      &mdash;
+      {{ candidate.data.on_behalf_of.name }}
+    </li>
+    {% empty %}
+    <li>
+      <em>(No candidates)</em>
+    </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% endblock %}

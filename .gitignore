@@ -1,0 +1,8 @@
+*.pyc
+/storage/
+/democlubdemo/settings/custom.py
+/static/
+celerybeat-schedule
+/.coverage
+/pep8.txt
+/coverage.xml

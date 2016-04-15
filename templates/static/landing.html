@@ -1,0 +1,28 @@
+{% extends "base/base.html" %}
+
+{% block title %}{{ block.super }}{% endblock %}
+
+{% block body_classes %}{{ block.super }} f_static_landing{% endblock %}
+
+{% block container %}
+
+<div class="page-header">
+  <h1>
+    Elections
+    <small>({{ elections.count }})</small>
+  </h1>
+</div>
+
+<ul>
+  {% for election in elections %}
+  <li>
+    <a href="{% url "elections:view" election.ident %}">{{ election.data.name }}</a>
+  </li>
+  {% empty %}
+  <li>
+    <em>(No elections have been added)</em>
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

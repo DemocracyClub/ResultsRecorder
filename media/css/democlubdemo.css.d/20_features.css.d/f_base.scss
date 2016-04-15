@@ -1,0 +1,23 @@
+.f_base {
+  padding-top: 60px;
+
+  .dropdown-menu li {
+    a {
+      border: none;
+    }
+
+    .btn.btn-link {
+      width: 100%;
+      display: block;
+      text-align: left;
+      color: #262626;
+      padding: 3px 20px;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        background-color: #f5f5f5;
+      }
+    }
+  }
+}

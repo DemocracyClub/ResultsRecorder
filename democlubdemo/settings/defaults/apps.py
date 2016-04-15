@@ -1,0 +1,26 @@
+INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.humanize',
+    'django.contrib.sessions',
+    'django.contrib.staticfiles',
+
+    'djcelery',
+    'django_autologin',
+    'django_keyerror',
+    'django_slack',
+    'django_yadt',
+    'email_from_template',
+    'jquery',
+    'staticfiles_dotd',
+    'storages',
+    'template_tests',
+    'social.apps.django_app.default',
+
+    'democlubdemo.account',
+    'democlubdemo.debug',
+    'democlubdemo.elections',
+    'democlubdemo.results',
+    'democlubdemo.static',
+    'democlubdemo.utils',
+)
