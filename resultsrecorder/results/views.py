@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 
-from democlubdemo.elections.models import Election
+from resultsrecorder.elections.models import Election
 
 from .forms import ResultSetForm
 from .models import ResultSet

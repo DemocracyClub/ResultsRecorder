@@ -1,5 +1,5 @@
 [Unit]
-Description=democlubdemo-gunicorn
+Description=resultsrecorder-gunicorn
 After=network.target
 
 [Install]
@@ -10,7 +10,7 @@ User=www-data
 Group=www-data
 Restart=always
 
-ExecStart=/usr/share/python/democlubdemo/bin/gunicorn --workers=2 --max-requests=500 --log-level=info --preload democlubdemo.wsgi
+ExecStart=/usr/share/python/resultsrecorder/bin/gunicorn --workers=2 --max-requests=500 --log-level=info --preload resultsrecorder.wsgi
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/bin/kill -s TERM $MAINPID
 

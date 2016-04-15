@@ -10,7 +10,7 @@ from setup_warnings import *
 
 djcelery.setup_loader()
 
-BASE_DIR = '/usr/share/python/democlubdemo'
+BASE_DIR = '/usr/share/python/resultsrecorder'
 
 # Fallback to relative location
 if not __file__.startswith(BASE_DIR):
@@ -29,8 +29,8 @@ ALLOWED_HOSTS = ('*',)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'democlubdemo',
-        'USER': 'democlubdemo',
+        'NAME': 'resultsrecorder',
+        'USER': 'resultsrecorder',
         'PASSWORD': '',
         'HOST': '',
         'PORT': '5432',
@@ -82,7 +82,7 @@ TEMPLATES = [{
             'django.template.context_processors.request',
             'django.contrib.auth.context_processors.auth',
             'django.contrib.messages.context_processors.messages',
-            'democlubdemo.utils.context_processors.settings_context',
+            'resultsrecorder.utils.context_processors.settings_context',
         ],
         'builtins': [
             'django.contrib.staticfiles.templatetags.staticfiles',
@@ -104,7 +104,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'democlubdemo.urls'
+ROOT_URLCONF = 'resultsrecorder.urls'
 
 SECRET_KEY = 'overriden-in-production'
 
@@ -127,7 +127,7 @@ CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
         'LOCATION': '127.0.0.1:11211',
-        'KEY_PREFIX': 'democlubdemo',
+        'KEY_PREFIX': 'resultsrecorder',
     }
 }
 
@@ -152,11 +152,11 @@ AKISMET_KEY = 'overriden-in-production'
 
 KEYERROR_SECRET_KEY = 'private'
 
-STATICFILES_DOTD_RENDER_FN = 'democlubdemo.debug.utils.render_file'
+STATICFILES_DOTD_RENDER_FN = 'resultsrecorder.debug.utils.render_file'
 
 SLACK_TOKEN = 'overriden-in-production'
-SLACK_CHANNEL = '#democlubdemo'
-SLACK_USERNAME = 'democlubdemo'
+SLACK_CHANNEL = '#resultsrecorder'
+SLACK_USERNAME = 'resultsrecorder'
 SLACK_BACKEND = 'django_slack.backends.CeleryBackend'
 
 # Always log to the console, even in production (ie. gunicorn)

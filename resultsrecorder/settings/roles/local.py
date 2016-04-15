@@ -11,7 +11,7 @@ SITE_URL = 'http://127.0.0.1:8000'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'democlubdemo',
+        'NAME': 'resultsrecorder',
         'ATOMIC_REQUESTS': True,
     },
 }

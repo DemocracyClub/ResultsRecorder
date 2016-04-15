@@ -1,7 +1,7 @@
 from django.contrib import auth
 from django.shortcuts import redirect, render
 
-from democlubdemo.utils.decorators import logout_required
+from resultsrecorder.utils.decorators import logout_required
 
 @logout_required
 def login(request):

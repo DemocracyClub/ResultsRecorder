@@ -1,4 +1,4 @@
-democlubdemo
+resultsrecorder
 =====
 
 Local database setup
@@ -10,15 +10,15 @@ Local database setup
 
 #. Create a database owned by this user::
 
-    $ sudo -u postgres createdb -E UTF-8 -O $(whoami) democlubdemo
+    $ sudo -u postgres createdb -E UTF-8 -O $(whoami) resultsrecorder
 
 #. Check we can connect to this database::
 
-    $ /usr/bin/psql democlubdemo
+    $ /usr/bin/psql resultsrecorder
     psql (9.1.2)
     Type "help" for help.
     
-    democlubdemo=> \q
+    resultsrecorder=> \q
 
 Syncing with the live site
 --------------------------

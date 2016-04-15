@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from democlubdemo.elections.models import Election
+from resultsrecorder.elections.models import Election
 
 def landing(request):
     elections = Election.objects.all()

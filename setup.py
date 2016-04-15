@@ -16,8 +16,8 @@ def find_data_files(dirs):
     return result
 
 setup(
-    name='democlubdemo',
-    scripts=('democlubdemo/manage.py',),
+    name='resultsrecorder',
+    scripts=('resultsrecorder/manage.py',),
     cmdclass={'test': setuptest.test},
     packages=find_packages(),
     zip_safe=False,

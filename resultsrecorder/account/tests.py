@@ -1,4 +1,4 @@
-from democlubdemo.utils.test import TestCase
+from resultsrecorder.utils.test import TestCase
 
 class SmokeTest(TestCase):
     def test_login(self):

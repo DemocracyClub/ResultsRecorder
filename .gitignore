@@ -1,6 +1,6 @@
 *.pyc
 /storage/
-/democlubdemo/settings/custom.py
+/resultsrecorder/settings/custom.py
 /static/
 celerybeat-schedule
 /.coverage

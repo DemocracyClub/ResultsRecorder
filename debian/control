@@ -1,4 +1,4 @@
-Source: democlubdemo
+Source: resultsrecorder
 Section: net
 Priority: optional
 Maintainer: Chris Lamb <chris@chris-lamb.co.uk>
@@ -15,7 +15,7 @@ Build-Depends:
  python
 Standards-Version: 3.9.6
 
-Package: democlubdemo
+Package: resultsrecorder
 Architecture: any
 Pre-Depends:
  python2.7,
@@ -23,4 +23,4 @@ Pre-Depends:
 Depends:
  ${misc:Depends},
  ${shlibs:Depends}
-Description: democlubdemo
+Description: resultsrecorder

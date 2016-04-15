@@ -1,1 +1,1 @@
-from democlubdemo.settings import *
+from resultsrecorder.settings import *
