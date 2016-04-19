@@ -5,7 +5,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.staticfiles',
 
-    'django_keyerror',
     'staticfiles_dotd',
     'template_tests',
     'social.apps.django_app.default',
