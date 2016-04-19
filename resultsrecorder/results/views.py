@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 from resultsrecorder.elections.models import Election
 
 from .forms import ResultSetForm
-from .models import ResultSet
 
 @login_required
 def submit(request, election_ident, post_ident):
@@ -17,7 +16,7 @@ def submit(request, election_ident, post_ident):
         form = ResultSetForm(post, request.POST)
 
         if form.is_valid():
-            instance = form.save(request.user)
+            form.save(request.user)
             messages.success(request, "Submitted!")
 
             return redirect('elections:post', election.ident, post.ident)
