@@ -30,7 +30,6 @@ def submit(request, election_ident, post_ident):
         'election': election,
     })
 
-@login_required
 def results(request, election_ident, post_ident):
     election = get_object_or_404(Election, ident=election_ident)
     post = get_object_or_404(election.posts, ident=post_ident)
