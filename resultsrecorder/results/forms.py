@@ -23,10 +23,12 @@ class ResultSetForm(forms.ModelForm):
             self.fields[name] = forms.IntegerField()
             self.candidates.append((x, self[name]))
 
-    def save(self, user):
+    def save(self, request):
         instance = super(ResultSetForm, self).save(commit=False)
-        instance.user = user
         instance.post = self.post
+        instance.user = request.user if \
+            request.user.is_authenticated() else None
+        instance.ip_address = request.META['REMOTE_ADDR']
         instance.save()
 
         winner = max((y.value(), x) for x, y in self.candidates)[1]

@@ -7,7 +7,6 @@ from resultsrecorder.elections.models import Election
 
 from .forms import ResultSetForm
 
-@login_required
 def submit(request, election_ident, post_ident):
     election = get_object_or_404(Election, ident=election_ident)
     post = get_object_or_404(election.posts, ident=post_ident)
@@ -16,7 +15,7 @@ def submit(request, election_ident, post_ident):
         form = ResultSetForm(post, request.POST)
 
         if form.is_valid():
-            form.save(request.user)
+            form.save(request)
             messages.success(request, "Submitted!")
 
             return redirect('elections:post', election.ident, post.ident)

@@ -3,8 +3,6 @@ import datetime
 from django.db import models
 
 class ResultSet(models.Model):
-    user = models.ForeignKey('auth.User', related_name='result_sets')
-
     post = models.ForeignKey(
         'elections.Post',
         related_name='result_sets',
@@ -16,6 +14,14 @@ class ResultSet(models.Model):
 
     is_final = models.BooleanField(default=False)
     is_verified = models.BooleanField(default=False)
+
+    user = models.ForeignKey(
+        'auth.User',
+        related_name='result_sets',
+        null=True,
+    )
+
+    ip_address = models.GenericIPAddressField()
 
     created = models.DateTimeField(default=datetime.datetime.utcnow)
 
