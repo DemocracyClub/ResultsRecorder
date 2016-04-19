@@ -1,5 +1,5 @@
-from django.conf import settings
 from django.contrib import auth
+
 from django.shortcuts import redirect, render
 
 from resultsrecorder.utils.decorators import logout_required
@@ -12,9 +12,9 @@ def login(request):
         form = LoginForm(request, request.POST)
 
         if form.is_valid():
-            form.login()
+            redirect_to = form.login()
 
-            return redirect(settings.LOGIN_REDIRECT_URL)
+            return redirect(redirect_to)
     else:
         form = LoginForm()
 
