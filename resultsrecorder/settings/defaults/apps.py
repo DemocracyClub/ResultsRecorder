@@ -12,6 +12,7 @@ INSTALLED_APPS = (
     'resultsrecorder.debug',
     'resultsrecorder.elections',
     'resultsrecorder.results',
+    'resultsrecorder.results.results_admin',
     'resultsrecorder.static',
     'resultsrecorder.utils',
 )

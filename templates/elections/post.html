@@ -55,8 +55,8 @@
       Submit results
     </a>
 
-    {% if post.result_sets.exists %}
-    <a href="{% url "results:results" election.ident post.ident %}" class="btn btn-default">
+    {% if request.user.is_authenticated %}
+    <a href="{% url "results:admin:view" election.ident post.ident %}" class="btn btn-default">
       Submitted results ({{ post.result_sets.count }})
     </a>
     {% endif %}
