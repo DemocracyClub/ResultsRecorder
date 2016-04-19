@@ -133,8 +133,6 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 
 FONTS_ENABLED = True
 
-AKISMET_KEY = 'overriden-in-production'
-
 KEYERROR_SECRET_KEY = 'private'
 
 STATICFILES_DOTD_RENDER_FN = 'resultsrecorder.debug.utils.render_file'
