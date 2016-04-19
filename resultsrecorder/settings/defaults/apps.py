@@ -6,7 +6,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'django_keyerror',
-    'django_slack',
     'email_from_template',
     'staticfiles_dotd',
     'template_tests',

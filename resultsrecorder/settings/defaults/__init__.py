@@ -135,10 +135,6 @@ KEYERROR_SECRET_KEY = 'private'
 
 STATICFILES_DOTD_RENDER_FN = 'resultsrecorder.debug.utils.render_file'
 
-SLACK_TOKEN = 'overriden-in-production'
-SLACK_CHANNEL = '#resultsrecorder'
-SLACK_USERNAME = 'resultsrecorder'
-
 # Always log to the console, even in production (ie. gunicorn)
 LOGGING = copy.deepcopy(DEFAULT_LOGGING)
 LOGGING['handlers']['console']['filters'] = []

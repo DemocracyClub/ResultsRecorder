@@ -9,7 +9,6 @@ https://github.com/lamby/django-setuptest/zipball/django-1.9-support#egg=django-
 gunicorn==19.4.5
 django-template-tests==1.1.0
 pyScss==1.3.4
-django-slack==5.2.1
 python-social-auth==0.2.14
 requests==2.9.1
 progressbar==2.3
