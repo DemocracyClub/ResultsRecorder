@@ -5,7 +5,7 @@ from resultsrecorder.utils.decorators import logout_required
 
 @logout_required
 def login(request):
-    return redirect('social:begin', 'twitter')
+    assert False, "FIXME"
 
 def logout(request):
     if request.method == 'POST' or not request.user.is_authenticated():

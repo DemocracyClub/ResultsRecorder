@@ -7,7 +7,6 @@ INSTALLED_APPS = (
 
     'staticfiles_dotd',
     'template_tests',
-    'social.apps.django_app.default',
 
     'resultsrecorder.account',
     'resultsrecorder.debug',

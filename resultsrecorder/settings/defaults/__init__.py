@@ -135,14 +135,3 @@ STATICFILES_DOTD_RENDER_FN = 'resultsrecorder.debug.utils.render_file'
 # Always log to the console, even in production (ie. gunicorn)
 LOGGING = copy.deepcopy(DEFAULT_LOGGING)
 LOGGING['handlers']['console']['filters'] = []
-
-
-# Social auth #################################################################
-
-AUTHENTICATION_BACKENDS = (
-    'social.backends.twitter.TwitterOAuth',
-)
-
-SOCIAL_AUTH_STORAGE = 'social.apps.django_app.default.models.DjangoStorage'
-SOCIAL_AUTH_STRATEGY = 'social.strategies.django_strategy.DjangoStrategy'
-SOCIAL_AUTH_DEFAULT_BACKEND = 'twitter'

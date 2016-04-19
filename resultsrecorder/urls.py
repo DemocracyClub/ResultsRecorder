@@ -11,7 +11,4 @@ urlpatterns = (
         namespace='results')),
     url(r'', include('resultsrecorder.static.urls',
         namespace='static')),
-
-    url(r'', include('social.apps.django_app.urls',
-        namespace='social')),
 )
