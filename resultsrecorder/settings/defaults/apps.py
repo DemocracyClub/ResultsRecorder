@@ -9,10 +9,8 @@ INSTALLED_APPS = (
     'django_autologin',
     'django_keyerror',
     'django_slack',
-    'django_yadt',
     'email_from_template',
     'staticfiles_dotd',
-    'storages',
     'template_tests',
     'social.apps.django_app.default',
 
