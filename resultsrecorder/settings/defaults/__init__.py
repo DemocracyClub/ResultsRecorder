@@ -131,8 +131,6 @@ DEFAULT_FROM_EMAIL = SERVER_EMAIL
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 
-KEYERROR_SECRET_KEY = 'private'
-
 STATICFILES_DOTD_RENDER_FN = 'resultsrecorder.debug.utils.render_file'
 
 # Always log to the console, even in production (ie. gunicorn)
