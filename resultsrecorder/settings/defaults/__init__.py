@@ -133,8 +133,6 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 
 FONTS_ENABLED = True
 
-BROKER_URL = 'redis://localhost:6379/0'
-
 AKISMET_KEY = 'overriden-in-production'
 
 KEYERROR_SECRET_KEY = 'private'
