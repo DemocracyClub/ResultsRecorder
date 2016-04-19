@@ -2,7 +2,7 @@ from resultsrecorder.utils.test import TestCase
 
 class SmokeTest(TestCase):
     def test_login(self):
-        self.assertGET(302, 'account:login')
+        self.assertGET(200, 'account:login')
 
 class LogoutTest(TestCase):
     def test_post(self):
