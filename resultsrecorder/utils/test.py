@@ -21,7 +21,11 @@ class TestCase(TestCase):
         self.assertEqual(
             response.status_code,
             status_code,
-            response,
+            "%s\nExpected HTTP %d, saw HTTP %d" % (
+                response,
+                status_code,
+                response.status_code,
+            ),
         )
 
         return response
