@@ -1,5 +1,4 @@
 import copy
-import djcelery
 
 from os.path import abspath, dirname, join
 
@@ -7,8 +6,6 @@ from django.utils.log import DEFAULT_LOGGING
 
 from apps import *
 from setup_warnings import *
-
-djcelery.setup_loader()
 
 BASE_DIR = '/usr/share/python/resultsrecorder'
 
@@ -147,7 +144,6 @@ STATICFILES_DOTD_RENDER_FN = 'resultsrecorder.debug.utils.render_file'
 SLACK_TOKEN = 'overriden-in-production'
 SLACK_CHANNEL = '#resultsrecorder'
 SLACK_USERNAME = 'resultsrecorder'
-SLACK_BACKEND = 'django_slack.backends.CeleryBackend'
 
 # Always log to the console, even in production (ie. gunicorn)
 LOGGING = copy.deepcopy(DEFAULT_LOGGING)
