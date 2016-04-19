@@ -6,7 +6,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'djcelery',
-    'django_autologin',
     'django_keyerror',
     'django_slack',
     'email_from_template',
