@@ -18,10 +18,22 @@ class TestCase(TestCase):
 
         response = fn(reverse(urlconf, args=args, kwargs=kwargs))
 
-        self.assertEqual(response.status_code, status_code, response)
+        self.assertEqual(
+            response.status_code,
+            status_code,
+            response,
+        )
+
+        return response
 
     def assertGET(self, status_code, urlconf, *args, **kwargs):
-        self.assertStatusCode(status_code, self.client.get, urlconf, *args, **kwargs)
+        return self.assertStatusCode(
+            status_code,
+            self.client.get,
+            urlconf,
+            *args,
+            **kwargs
+        )
 
     def assertPOST(self, data, *args, **kwargs):
         status_code = kwargs.pop('status_code', 302)
