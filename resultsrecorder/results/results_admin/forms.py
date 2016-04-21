@@ -1,3 +1,5 @@
+import datetime
+
 from django import forms
 
 from resultsrecorder.results.models import ResultSet
@@ -10,6 +12,7 @@ class ConfirmForm(forms.ModelForm):
 
     def save(self, request):
         instance = super(ConfirmForm, self).save(commit=False)
+        instance.updated = datetime.datetime.utcnow()
         instance.confirmed_by = request.user
         instance.save()
 

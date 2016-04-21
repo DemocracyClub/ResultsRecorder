@@ -11,6 +11,7 @@ class Election(models.Model):
     data = JSONField()
 
     created = models.DateTimeField(default=datetime.datetime.utcnow)
+    updated = models.DateTimeField(default=datetime.datetime.utcnow)
 
     objects = ElectionManager()
 
@@ -32,6 +33,7 @@ class Post(models.Model):
     data = JSONField()
 
     created = models.DateTimeField(default=datetime.datetime.utcnow)
+    updated = models.DateTimeField(default=datetime.datetime.utcnow)
 
     class Meta:
         ordering = ('ident',)
@@ -51,6 +53,7 @@ class Candidate(models.Model):
     data = JSONField()
 
     created = models.DateTimeField(default=datetime.datetime.utcnow)
+    updated = models.DateTimeField(default=datetime.datetime.utcnow)
 
     class Meta:
         ordering = ('ident',)

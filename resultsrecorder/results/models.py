@@ -29,6 +29,7 @@ class ResultSet(models.Model):
     ip_address = models.GenericIPAddressField()
 
     created = models.DateTimeField(default=datetime.datetime.utcnow)
+    updated = models.DateTimeField(default=datetime.datetime.utcnow)
 
     class Meta:
         ordering = ('-created',)
