@@ -122,8 +122,8 @@ SITE_URL = 'overriden-in-production'
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
-LOGIN_URL = '/login'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'account:login'
+LOGIN_REDIRECT_URL = 'static:landing'
 
 SERVER_EMAIL = 'overriden-in-production'
 DEFAULT_FROM_EMAIL = SERVER_EMAIL
