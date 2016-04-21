@@ -14,6 +14,8 @@ class ResultSet(models.Model):
 
     is_final = models.BooleanField(default=False)
 
+    source = models.TextField()
+
     user = models.ForeignKey(
         'auth.User',
         related_name='result_sets',

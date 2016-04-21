@@ -9,6 +9,7 @@ class ResultSetForm(forms.ModelForm):
             'num_turnout_calculated',
             'num_turnout_reported',
             'num_spoilt_ballots',
+            'source',
         )
 
     def __init__(self, post, *args, **kwargs):
