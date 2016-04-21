@@ -3,7 +3,10 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 
+from resultsrecorder.utils.forms import emit_errors
 from resultsrecorder.elections.models import Election
+
+from .forms import ConfirmForm
 
 @login_required
 def view(request, election_ident, post_ident):
@@ -22,13 +25,13 @@ def confirm(request, election_ident, post_ident, result_set_id):
     post = get_object_or_404(election.posts, ident=post_ident)
     result_set = get_object_or_404(post.result_sets, pk=result_set_id)
 
-    if post.result_sets.filter(confirmed_by__isnull=False).exists():
-        messages.error(request, "A result set for this post already exists.")
-    else:
-        result_set.confirmed_by = request.user
-        result_set.save()
+    form = ConfirmForm(request.POST, instance=result_set)
 
+    if form.is_valid():
+        form.save(request)
         messages.success(request, "Result set confirmed.")
+    else:
+        emit_errors(request, form)
 
     return redirect('elections:post', election.ident, post.ident)
 
