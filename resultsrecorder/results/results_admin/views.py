@@ -17,18 +17,18 @@ def view(request, election_ident, post_ident):
 
 @require_POST
 @login_required
-def verify(request, election_ident, post_ident, result_set_id):
+def confirm(request, election_ident, post_ident, result_set_id):
     election = get_object_or_404(Election, ident=election_ident)
     post = get_object_or_404(election.posts, ident=post_ident)
     result_set = get_object_or_404(post.result_sets, pk=result_set_id)
 
-    if post.result_sets.filter(is_verified=True).exists():
+    if post.result_sets.filter(is_confirmed=True).exists():
         messages.error(request, "A result set for this post already exists.")
     else:
-        result_set.is_verified = True
+        result_set.is_confirmed = True
         result_set.save()
 
-        messages.success(request, "Result set verified.")
+        messages.success(request, "Result set confirmed.")
 
     return redirect('elections:post', election.ident, post.ident)
 
