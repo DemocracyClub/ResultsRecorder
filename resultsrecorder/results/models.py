@@ -13,11 +13,16 @@ class ResultSet(models.Model):
     num_spoilt_ballots = models.IntegerField()
 
     is_final = models.BooleanField(default=False)
-    is_confirmed = models.BooleanField(default=False)
 
     user = models.ForeignKey(
         'auth.User',
         related_name='result_sets',
+        null=True,
+    )
+
+    confirmed_by = models.ForeignKey(
+        'auth.User',
+        related_name='result_sets_confirmed',
         null=True,
     )
 

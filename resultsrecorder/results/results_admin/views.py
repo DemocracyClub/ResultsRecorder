@@ -22,10 +22,10 @@ def confirm(request, election_ident, post_ident, result_set_id):
     post = get_object_or_404(election.posts, ident=post_ident)
     result_set = get_object_or_404(post.result_sets, pk=result_set_id)
 
-    if post.result_sets.filter(is_confirmed=True).exists():
+    if post.result_sets.filter(confirmed_by__isnull=False).exists():
         messages.error(request, "A result set for this post already exists.")
     else:
-        result_set.is_confirmed = True
+        result_set.confirmed_by = request.user
         result_set.save()
 
         messages.success(request, "Result set confirmed.")

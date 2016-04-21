@@ -12,7 +12,7 @@ def view(request, election_ident):
 def post(request, election_ident, post_ident):
     election = get_object_or_404(Election, ident=election_ident)
     post = get_object_or_404(election.posts, ident=post_ident)
-    result_set = post.result_sets.filter(is_confirmed=True).first()
+    result_set = post.result_sets.filter(confirmed_by__isnull=False).first()
 
     return render(request, 'elections/post.html', {
         'post': post,
